@@ -1,0 +1,55 @@
+<!-- <div class="container"> -->
+  <div class="row">
+    <div class="col-xs-12">
+      <hr style="border-top: 3px solid green;" />
+      <hr/>
+      <h2 class='detailheader'><span class="itemname">{{team.name}}</span> team details</h2>
+      <form (ngSubmit)="onSubmit(playerForm)" #playerForm="ngForm">
+        <div class="row">
+          <div class="form-group col-xs-4">
+            <label for='name'>Team name</label>
+            <input class="form-control" name="name" required [(ngModel)]="team.name" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-4">
+            <h4>Players</h4>
+              <players-link-component [links]=team.players></players-link-component>
+          </div>
+          <div class="col-xs-4" ></div>
+          <div class="form-group col-xs-4">
+            <h4>Contacts</h4>
+              <users-link-component [links]=team.contacts></users-link-component>
+          </div>
+        </div>
+        <!-- <div class="form-group col-xs-6">
+          <label for='lastName'>Last name</label>
+          <input class="form-control" name="lastName" required [(ngModel)]="player.last_name" />
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-4">
+            <label for='dateOfBirth'>Date of birth</label>
+            <input #dateOfBirth type="date" name="dateOfBirth" class="form-control" [(ngModel)]="player.dob" />
+          </div>
+          <div class="form-group">
+            <label for='team'>Team</label>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+              {{player.team.name}}
+              <span class="caret"></span>
+            </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation" *ngFor="let t of teams">
+                  <a role="menuitem" tabindex="-1" href="#" (click)="player.team=t">{{t.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      </form>
+      <div [hidden]="!playerForm.form.valid">
+        {{submitMessage}}
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

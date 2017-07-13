@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label for='team1'>Team 1</label>
+        <input #team1 [(ngModel)]="team_1"/>
+        <label for='team2'>Team 2</label>
+        <input #team2 [(ngModel)]="team_2"/>
+        <label for="matchLocation">Location</label>
+        <input #matchLocation [(ngModel)]="location"/>
+        <label for='matchDate'>Date</label>
+        <input #matchDate type="date" class="form-control" [(ngModel)]="date"/>
+        <label for='matchResult'>Result</label>
+        <input #matchResult class="form-control" [value]="result" readonly/> 
+      </div>
+    </div>
+  </div>
+</div>

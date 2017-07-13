@@ -1,0 +1,11 @@
+import { InjectionToken } from '@angular/core';
+
+export class AppConfig {
+  apiEndpoint: string;
+}
+
+export let APP_CONFIG = new  InjectionToken<AppConfig>('app.config');
+
+export const DEV_CONFIG: AppConfig = {
+  apiEndpoint: 'http://localhost:5000/chessleague/api/1.0'
+};

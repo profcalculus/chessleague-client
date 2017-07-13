@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-xs-12">
+    <hr/>
+    <h2 class='detailheader'>User details for <span class="itemname">{{user.name}}</span></h2>
+    <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <label for='userName'>Username</label>
+          <input class="form-control" name="userName" required [(ngModel)]="user.user_name" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <label for='firstName'>First name</label>
+          <input class="form-control" name="firstName" required [(ngModel)]="user.first_name" />
+          <label for='lastName'>Last name</label>
+          <input class="form-control" name="lastName" required [(ngModel)]="user.last_name" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <label for='email'>Email</label>
+          <input class="form-control" type="email" name="email" [(ngModel)]="user.email" />
+          <label for='phone1'>Phone 1</label>
+          <input class="form-control" name="phone1" type="tel" [(ngModel)]="user.phone1" />
+          <label for='phone2'>Phone2</label>
+          <input class="form-control" name="phone2" type="tel" [(ngModel)]="user.phone2" />
+        </div>
+      </div>
+      <!-- <div class="form-group col-xs-6">
+        </div> -->
+      <div class="row">
+        <div class="form-group col-xs-4">
+          <label for='password_hash'>Password</label>
+          <input #password type="password" name="password" class="form-control" [(ngModel)]="user.password_hash" />
+        </div>
+        <div class="col-xs-4"></div>
+        <div class="form-group col-xs-4">
+          <label for='team'>Contact for team</label>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+              {{user.team.name}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation" *ngFor="let t of teams">
+                <div role="menuitem" tabindex="-1" (click)="user.team=t; userForm.dirty=true">{{t.name}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <input type="submit" class="btn btn-success" [disabled]="!userForm.dirty" value="Save">
+          <!-- Submit</input> -->
+          <input type="reset" class="btn btn-warning" value="Cancel" (click)="onCancel()">
+        </div>
+      </div>
+    </form>
+    <div [hidden]="!userForm.form.valid">
+      {{submitMessage}}
+    </div>
+  </div>
+</div>

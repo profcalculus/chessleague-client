@@ -1,0 +1,13 @@
+"use strict";
+exports.__esModule = true;
+var core_1 = require("@angular/core");
+var AppConfig = (function () {
+    function AppConfig() {
+    }
+    return AppConfig;
+}());
+exports.AppConfig = AppConfig;
+exports.APP_CONFIG = new core_1.InjectionToken('app.config');
+exports.DEV_CONFIG = {
+    apiEndpoint: 'http://localhost:5000/chessleague/api/1.0'
+};

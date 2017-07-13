@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.itemname {
+  font-style: italic;
+  color: #0055ff;
+}
+
+.dropdown-menu li.active > div,
+.dropdown-menu li.active > div:hover,
+.dropdown-menu li.active > div:focus {
+  background-color: #555555;
+  }
+
+  label {
+    color: darkblue;
+  }
+
+  .tablebox {
+    margin: auto;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: #c0c0c0;
+  }
