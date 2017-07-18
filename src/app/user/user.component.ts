@@ -9,7 +9,7 @@ import { TeamService } from '../team/team.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['../shared/shared-styles.css']
+  styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
   id: number;

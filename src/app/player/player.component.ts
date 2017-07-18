@@ -1,6 +1,6 @@
 import { Component, OnInit, Input  } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 import { Player } from '../player/player.model';
 import { Team } from '../team/team.model';
 import { PlayerService } from '../player/player.service';
@@ -9,7 +9,7 @@ import { TeamService } from '../team/team.service';
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['../shared/shared-styles.css']
+  styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
   id: number;
@@ -45,11 +45,11 @@ export class PlayerComponent implements OnInit {
   }
 
 onCancel() {
-  alert ("Cancelled");
+  alert ('Cancelled');
   this.location.back();
 }
 onSubmit(playerForm) {
-  alert("Submitted");
+  alert('Submitted');
   this.location.back();
 }
 }

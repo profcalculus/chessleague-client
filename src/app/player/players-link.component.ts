@@ -1,26 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewCell } from 'ng2-smart-table'
+import { ViewCell } from 'ng2-smart-table';
 
 @Component({
-  selector: 'players-link-component',
+  selector: 'app-players-link-component',
   template:
   `
   <div class="list-group" *ngFor="let link of value">
       <a class="list-group-item" [routerLink]="[url, link.id]">{{link.name}}</a>
-  </div>`,
-  styleUrls:
-  ["../shared/shared-styles.css",],
+  </div>`
 })
 
 export class PlayersLinkComponent implements ViewCell {
-  url:string = '/players/';
+  url = '/players/';
   links: {
     id: number,
     name: string,
   }[];
-  debugJson:string;
+  debugJson: string;
 
-  @Input('links') value: any;
+  @Input() value: any;
   @Input() rowData: any;
 
 constructor() {

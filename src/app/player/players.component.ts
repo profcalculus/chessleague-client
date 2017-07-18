@@ -1,4 +1,5 @@
-import { ViewCell } from 'ng2-smart-table'
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { ViewCell } from 'ng2-smart-table';
 import { Component, OnInit, Input } from '@angular/core';
 import { PlayerService } from './player.service';
 import { Player } from './player.model';
@@ -10,8 +11,7 @@ import { PlayerLinkComponent } from './player-link.component';
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
-  styleUrls: ['../shared/shared-styles.css',
-  '../../assets/ionicfonts/css/ionicons.min.css'],
+  styleUrls: ['./players.component.css'],
 })
 export class PlayersComponent implements OnInit {
 
@@ -19,11 +19,10 @@ export class PlayersComponent implements OnInit {
 
   settings = {
     columns: {
-      "{name: name,id: id}": {
+      link: {
         title: 'Name',
         type: 'custom',
         renderComponent: PlayerLinkComponent,
-        sort: true,
         compareFunction: PlayersComponent.compareNames,
       },
       dob: {
@@ -33,28 +32,28 @@ export class PlayersComponent implements OnInit {
         title: 'Team',
         type: 'custom',
         renderComponent: TeamLinkComponent,
+        compareFunction: PlayersComponent.compareNames,
       },
     },
-  //   add: {
-  //   addButtonContent: '<i class="ion-ios-plus-outline"></i>',
-  //   createButtonContent: '<i class="ion-checkmark"></i>',
-  //   cancelButtonContent: '<i class="ion-close"></i>',
-  //    confirmCreate: true,
-  //  },
+    actions: {
+      add: true,
+      edit: true,
+      delete: true,
+      position: 'right',
+    },
+    add: {
+    addButtonContent: '<span class="glyphicon glyphicon-plus"></span>',
+    editButtonContent: '<span class="glyphicon glyphicon-pencil">EDIT ME</span>',
+    cancelButtonContent: '<span class="glyphicon glyphicon-remove">CANCEL ME</span>',
+     confirmCreate: true,
+   },
+
   };
 
   currentPlayer = 'Joe Bloggs';
   errorMessage: string;
 
-  constructor(private playerService: PlayerService) {
-    this.players = new LocalDataSource();
-  }
-
-  ngOnInit() {
-    this.getPlayers();
-  }
-
-  private static compareNames(direction: any, link1:any, link2:any) {
+  private static compareNames(direction: any, link1: any, link2: any) {
     if (link1.name < link2.name) {
       return -1 * direction;
     }
@@ -63,6 +62,14 @@ export class PlayersComponent implements OnInit {
       }
       return 0;
     }
+
+  constructor(private playerService: PlayerService) {
+    this.players = new LocalDataSource();
+  }
+
+  ngOnInit() {
+    this.getPlayers();
+  }
 
   getPlayers() {
     this.playerService.getPlayers()

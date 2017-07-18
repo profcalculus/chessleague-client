@@ -8,7 +8,7 @@ import { UsersLinkComponent } from '../user/users-link.component';
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
-  styleUrls: ['../shared/shared-styles.css']
+  styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
 
@@ -24,11 +24,13 @@ export class TeamsComponent implements OnInit {
         title: 'Players',
         type: 'custom',
         renderComponent: PlayersLinkComponent,
+        sort: false,
       },
       contacts: {
         title: 'Contacts',
         type: 'custom',
         renderComponent: UsersLinkComponent,
+        sort: false,
       },
     }
   };
@@ -50,12 +52,12 @@ export class TeamsComponent implements OnInit {
         this.teams.load(teams);
          console.log('TEAMS');
          console.dir(this.teams);
-         console.log('/TEAMS')},
+         console.log('/TEAMS'); },
       error => this.errorMessage = error);
   }
 
-  addTeam(jsonObj : any) {
-    let team = jsonObj as Team;
+  addTeam(jsonObj: any) {
+    const team = jsonObj as Team;
     this.teamService.addTeam(team);
   }
 
