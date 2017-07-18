@@ -10,19 +10,19 @@ import { ViewCell } from 'ng2-smart-table';
   </div>`
 })
 
-export class PlayersLinkComponent implements ViewCell {
+export class PlayersLinkComponent implements OnInit, ViewCell {
   url = '/players/';
-  links: {
-    id: number,
-    name: string,
-  }[];
+  // links: {
+  //   id: number,
+  //   name: string,
+  // }[];
   debugJson: string;
 
-  @Input() value: any;
+  @Input('links') value: any;
   @Input() rowData: any;
 
-constructor() {
-
+ngOnInit() {
+  // this.links = this.value;
 }
 
 }

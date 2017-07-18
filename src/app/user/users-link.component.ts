@@ -10,14 +10,16 @@ import { ViewCell } from 'ng2-smart-table';
   </div>
   `
 })
-export class UsersLinkComponent implements ViewCell {
+export class UsersLinkComponent implements OnInit, ViewCell {
   url = '/users/';
-  links: {
-    id: number,
-    name: string,
-  }[];
+  // links: {
+  //   id: number,
+  //   name: string,
+  // }[];
 
-  @Input() value: any;
+  @Input('links') value: any;
   @Input() rowData: any;
-
+  ngOnInit() {
+    // this.links = this.value;
+  }
 }
