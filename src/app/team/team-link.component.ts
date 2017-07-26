@@ -1,12 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { NameLinkComponent } from '../shared/namelink/namelink.component';
+import { ViewCell } from 'ng2-smart-table';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  templateUrl: '../shared/namelink/namelink.component.html',
+  selector: 'app-team-link',
+  template: `<a [routerLink]="[link, id]">{{name}}</a>`
 })
-export class TeamLinkComponent extends NameLinkComponent {
-  constructor() {
-  super('teams');
-}
+export class TeamLinkComponent implements ViewCell, OnInit {
+  @Input()  value: any;
+  @Input() rowData: any;
+  name: string;
+  id: number;
+  link = '/teams/';
 
-}
+    ngOnInit() {
+      this.name = this.value.name;
+      this.id = +this.value.id;
+    }
+
+  }

@@ -1,57 +1,95 @@
+<div class="header">
+  <h3>Player details for</h3>
+</div>
 <div class="row">
-  <div class="col-xs-12">
-    <hr/>
-    <h2 class='detailheader'>Player details for <span class="itemname">{{player.name}}</span></h2>
-    <form (ngSubmit)="onSubmit(playerForm)" #playerForm="ngForm">
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <label for='firstName'>First name</label>
-          <input class="form-control" name="firstName" required [(ngModel)]="player.first_name" />
-          <label for='lastName'>Last name</label>
-          <input class="form-control" name="lastName" required [(ngModel)]="player.last_name" />
-        </div>
+  <h2 class="itemname">{{player.name}}</h2>
+</div>
+<hr style="border: 1px solid black">
+
+<form class="form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="form-group row form-inline">
+    <label for='first_name' class="col-4 col-form-label">First name</label>
+    <input [ngModel]="player.first_name"
+     class="form-control"
+      name="first_name"
+       required
+        #firstNameCtrl="ngModel">
+    <div class="row" *ngIf="firstNameCtrl.invalid && firstNameCtrl.touched">
+      <div class="help-block">
+        Please enter a first name!
       </div>
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <label for='email'>Email</label>
-          <input class="form-control" type="email" name="email" [(ngModel)]="player.email" />
-          <label for='telephone'>Telephone</label>
-          <input class="form-control" name="phone" type="tel" [(ngModel)]="player.phone" />
-        </div>
-      </div>
-      <!-- <div class="form-group col-xs-6">
-        </div> -->
-      <div class="row">
-        <div class="form-group col-xs-4">
-          <label for='dateOfBirth'>Date of birth</label>
-          <input #dateOfBirth type="date" name="dateOfBirth" class="form-control" [(ngModel)]="player.dob" />
-        </div>
-        <div class="col-xs-4"></div>
-        <div class="form-group col-xs-4">
-          <label for='team'>Team</label>
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-              {{player.team.name}}
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation" *ngFor="let t of teams">
-                <div role="menuitem" tabindex="-1" (click)="player.team=t; playerForm.dirty=true">{{t.name}}</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <input type="submit" class="btn btn-success" [disabled]="!playerForm.dirty" value="Save">
-          <!-- Submit</input> -->
-          <input type="reset" class="btn btn-warning" value="Cancel" (click)="onCancel()">
-        </div>
-      </div>
-    </form>
-    <div [hidden]="!playerForm.form.valid">
-      {{submitMessage}}
     </div>
   </div>
-</div>
+  <div class="form-group row form-inline">
+    <label for='last_name' class="col-4 col-form-label">Last name</label>
+    <input [ngModel]="player.last_name" class="form-control" name="last_name" required #lastNameCtrl="ngModel">
+    <div class="row" *ngIf=" lastNameCtrl.invalid && lastNameCtrl.touched">
+      <div class="help-block">
+        Please enter a last name!
+      </div>
+    </div>
+  </div>
+  <div class="form-group row form-inline">
+    <label for='email' class="col-4 col-form-label">Email</label>
+    <input [ngModel]="player.email" 
+    class="form-control" 
+    name="email" 
+    #emailCtrl="ngModel" 
+    pattern="([0-9a-zA-Z]+@[0-9a-zA-Z]+(\.[0-9a-zA-Z]+)?)?">
+    <div class="row" *ngIf="emailCtrl.value && emailCtrl.invalid">
+      <div class="help-block">
+        Please enter a valid email!
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-inline">
+    <label for='phone_1' class="col-4 col-form-label">Phone 1</label>
+    <input [ngModel]="player.phone_1" class="form-control" name="phone_1" #phone1Ctrl="ngModel" pattern="[0-9 \-\(\)]*">
+    <div class="row" *ngIf="phone1Ctrl.invalid">
+      <div class="help-block">
+        Please enter a valid phone number!
+      </div>
+    </div>
+  </div>
+  <div class="form-group row form-inline">
+    <label for='phone_2' class="col-4 col-form-label">Phone 2</label>
+    <input [ngModel]="player.phone_2" class="form-control" name="phone_2" #phone2Ctrl="ngModel" pattern="[0-9 \-\(\)]*">
+    <div class="row" *ngIf="phone2Ctrl.invalid">
+      <div class="help-block">
+        Please enter a valid phone number!
+      </div>
+    </div>
+  </div>
+  <div class="form-group row form-inline">
+    <label for='dob' class="col-4 col-form-label">Date of birth</label>
+    <input [ngModel]="player.dob" #dateOfBirth type="date" name="dob" class="form-control" #dobCtrl="ngModel" date>
+  </div>
+  <div class="form-group row form-inline">
+    <label for='team_id' class="col-4 col-form-label">Team</label>
+    <!-- <div class="dropdown col-8 form-control">
+      <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+              {{player.team.name}}
+              <span class="caret"></span>
+            </button> -->
+    <select [ngModel]="player.team.id" #team_id name="team_id" id="team_id" class="form-control col-md-6" #teamCtrl="ngModel">
+        <option *ngFor="let t of teams" [ngValue]="t.id" [selected]="t.id===player.team.id">
+          {{t.name}}
+        </option>
+      </select>
+    <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation" *ngFor="let t of teams">
+          <div role="menuitem" tabindex="-1" (click)="player.team=t; playerForm.dirty=true">{{t.name}}</div>
+        </li>
+      </ul> -->
+    <!-- </div> -->
+  </div>
+  <div class="form-group row form-inline">
+    <div class="col-4">
+      <input type="submit" class="btn btn-success" [disabled]="form.invalid || form.pristine" value="Save">
+    </div>
+    <div class="col-4 col-offset-4">
+      <input type="reset" class="btn btn-warning" value="Cancel" (click)="onCancel()">
+    </div>
+  </div>
+</form>

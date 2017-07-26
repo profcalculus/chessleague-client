@@ -1,33 +1,31 @@
 <div class="row">
-  <div class="col-xs-12">
-    <hr/>
-    <h2 class='detailheader'>Game details </h2>
-    <form (ngSubmit)="onSubmit(gameForm)" #gameForm="ngForm">
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <label for='white'>White</label>
-          <input class="form-control" name="white" required [(ngModel)]="game.white" />
-          <label for='black'>Black</label>
-          <input class="form-control" name="black" required [(ngModel)]="game.black" />
-        </div>
+  <hr/>
+  <h2 class='detailheader'>Game details </h2>
+  <form (ngSubmit)="onSubmit(gameForm)" #gameForm="ngForm">
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <label for='white'>White</label>
+        <input class="form-control" name="white" required [(ngModel)]="game.white" />
+        <label for='black'>Black</label>
+        <input class="form-control" name="black" required [(ngModel)]="game.black" />
       </div>
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <label for='email'>Location</label>
-          <input class="form-control"  name="location" [(ngModel)]="game.location" />
-          <label for='result'>Result</label>
-          <input class="form-control" name="result" [(ngModel)]="game.result" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <input type="submit" class="btn btn-success" [disabled]="!gameForm.dirty" value="Save">
-          <input type="reset" class="btn btn-warning" value="Cancel" (click)="onCancel()">
-        </div>
-      </div>
-    </form>
-    <div [hidden]="!gameForm.form.valid">
-      {{submitMessage}}
     </div>
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <label for='email'>Location</label>
+        <input class="form-control" name="location" [(ngModel)]="game.location" />
+        <label for='result'>Result</label>
+        <input class="form-control" name="result" [(ngModel)]="game.result" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <input type="submit" class="btn btn-success" [disabled]="!gameForm.dirty" value="Save">
+        <input type="reset" class="btn btn-warning" value="Cancel" (click)="onCancel()">
+      </div>
+    </div>
+  </form>
+  <div [hidden]="!gameForm.form.valid">
+    {{submitMessage}}
   </div>
 </div>

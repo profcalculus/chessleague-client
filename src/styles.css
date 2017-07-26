@@ -1,13 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+ .detailheader{
+    text-align: center;
+  }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+div.help-block {
+  background-color: pink;
+  text-align: center;
+}
+
 .itemname {
   font-style: italic;
-  color: #0055ff;
+  color: #666666;
+  text-align: center;
 }
 
 .dropdown-menu li.active > div,
 .dropdown-menu li.active > div:hover,
 .dropdown-menu li.active > div:focus {
-  background-color: #555555;
+  background-color: #666666;
   }
 
   label {
@@ -20,3 +33,4 @@
     border-style: solid;
     border-color: #c0c0c0;
   }
+ 

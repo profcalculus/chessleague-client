@@ -5,24 +5,17 @@ import { ViewCell } from 'ng2-smart-table';
   selector: 'app-players-link-component',
   template:
   `
-  <div class="list-group" *ngFor="let link of value">
+  <div class="row" *ngFor="let link of value">
+    <div class="col-md-12">
       <a class="list-group-item" [routerLink]="[url, link.id]">{{link.name}}</a>
+    </div>
   </div>`
 })
 
-export class PlayersLinkComponent implements OnInit, ViewCell {
+export class PlayersLinkComponent implements ViewCell {
   url = '/players/';
-  // links: {
-  //   id: number,
-  //   name: string,
-  // }[];
-  debugJson: string;
-
   @Input('links') value: any;
   @Input() rowData: any;
-
-ngOnInit() {
-  // this.links = this.value;
-}
+  get diagnostic() { return JSON.stringify(this); }
 
 }

@@ -1,13 +1,15 @@
-<div class="container">
+<div class="container" (dataChanged)="onDataCanged()">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
       <h2>Players</h2>
-      <fa name="cog" animation="spin"></fa>
-      <div class="tablebox">
-        <ng2-smart-table [settings] = "settings" [source]="players" class="table table-striped table-bordered table-hover"></ng2-smart-table>
-      </div>
-      <!-- <div *ngIf="currentUser" class="row">
+    </div>
+    <div class="col-xs-4"></div>
+    <div class="tablebox">
+      <ng2-smart-table [settings]="settings" [source]="players" class="table table-striped table-bordered table-hover"></ng2-smart-table>
+    </div>
+    <!-- <div *ngIf="currentUser" class="row">
         <button type="button" class="btn btn-primary" (click)="addPlayer()">Add player</button>
       </div> -->
-    </div>
-    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+  </div>
+  <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

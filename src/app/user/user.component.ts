@@ -46,10 +46,8 @@ export class UserComponent implements OnInit {
 
 onCancel() {
   alert ("Cancelled");
-  this.location.back();
 }
 onSubmit(userForm) {
   alert("Submitted");
-  this.location.back();
 }
 }

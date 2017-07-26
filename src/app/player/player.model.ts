@@ -1,12 +1,13 @@
 export class Player {
- static fromJson(jsonObj): Player {
+  static fromJson(jsonObj): Player {
     return new Player(
       jsonObj.id,
       jsonObj.first_name,
       jsonObj.last_name,
       jsonObj.dob,
       jsonObj.email,
-      jsonObj.phone,
+      jsonObj.phone_1,
+      jsonObj.phone_2,
       jsonObj.team
     );
   }
@@ -15,13 +16,15 @@ export class Player {
     public id: number,
     public first_name: string,
     public last_name: string,
-    public dob: Date,
-    public email: string,
-    public phone: string,
-    public team: {
+    public dob?: Date,
+    public email?: string,
+    public phone_1?: string,
+    public phone_2?: string,
+    public team?: {
       name: string,
       id: number,
-    }) { };
+    },
+  ) { };
 
 
 
@@ -30,9 +33,9 @@ export class Player {
   }
 
   get link(): Object {
-  return {
-    name: this.last_name,
-    id: this.id
-  };
+    return {
+      name: this.last_name,
+      id: this.id
+    };
   };
 }

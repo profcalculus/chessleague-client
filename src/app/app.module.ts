@@ -4,11 +4,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { ResourceModule } from 'ngx-resource';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import {PlayerService} from './player/player.service';
+import { PlayerService } from './player/player.service';
 import { PlayerComponent } from './player/player.component';
 import { PlayersComponent } from './player/players.component';
 import { PlayerLinkComponent } from './player/player-link.component';
@@ -76,7 +76,7 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule,
     Ng2SmartTableModule,
-    AngularFontAwesomeModule,
+    ResourceModule.forRoot(),
   ],
   providers: [
     PlayerService,

@@ -7,11 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
 
   currentUser: string = null;
+  feature: string = 'players';
 
   @Output() featureSelected = new EventEmitter<string>();
 
-  onSelect(event, feature: string) {
+  onSelect(feature: string) {
+    this.feature = feature;
     this.featureSelected.emit(feature);
+    console.log('feature='+feature);
   }
   onLogin() {
     this.currentUser = 'dummy';
